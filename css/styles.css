@@ -1,0 +1,95 @@
+:root {
+  --spin-start: 0;
+  --spin-end: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333;
+  font-family: sans-serif;
+  color: aliceblue;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.roulette {
+  position: relative;
+}
+
+.roulette__arrow {
+  position: absolute;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 30px solid #efd780;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.roulette__sections {
+  display: grid;
+  grid-template-columns: repeat(2, 150px);
+  grid-template-rows: repeat(2, 150px);
+  align-items: center;
+  justify-items: center;
+  width: 300px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    #62bb47 90deg,
+    #f6821f 0 180deg,
+    #963d97 0 270deg,
+    #009ddc 0 360deg
+  );
+  transform: rotate(var(--spin-start));
+}
+
+.roulette__sections--spin {
+  animation: spin 5s ease-in-out forwards;
+}
+
+.roulette__section--first {
+  transform: rotate(-45deg);
+  padding-top: 20px;
+}
+
+.roulette__section--second {
+  transform: rotate(45deg);
+  padding-top: 20px;
+}
+
+.roulette__section--third {
+  transform: rotate(-135deg);
+  padding-top: 20px;
+}
+
+.roulette__section--fourth {
+  transform: rotate(135deg);
+  padding-top: 20px;
+}
+
+.roulette__button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  outline: none;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(var(--spin-start));
+  }
+  to {
+    transform: rotate(var(--spin-end));
+  }
+}
