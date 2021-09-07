@@ -42,10 +42,10 @@ body {
   margin-right: auto;
   border-radius: 50%;
   background-image: conic-gradient(
-    #62bb47 90deg,
-    #f6821f 0 180deg,
-    #963d97 0 270deg,
-    #009ddc 0 360deg
+    #009ddc 90deg,
+    #963d97 0 180deg,
+    #f6821f 0 270deg,
+    #62bb47 0 360deg
   );
   transform: rotate(var(--spin-start));
 }
