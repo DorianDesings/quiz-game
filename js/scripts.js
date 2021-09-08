@@ -1,5 +1,6 @@
 const rouletteButton = document.getElementById('roulette-button');
 const rouletteSections = document.getElementById('roulette-sections');
+let level = 'easy';
 
 const rootStyle = document.documentElement.style;
 
@@ -24,17 +25,23 @@ const categories = {
   }
 };
 
-const randomNumber = () => Math.floor(Math.random() * 360) + 1800;
+const randomNumber = () => Math.floor(Math.random() * 360) + 3600;
 
-const fetchCategory = category => {
-  console.log(category);
+const fetchCategory = async category => {
+  if (category === 'random') {
+    category = Object.keys(categories)[Math.floor(Math.random() * 3)];
+  }
+
+  const request = await fetch(`./questions/${category}.json`);
+  const data = await request.json();
+  console.log(data[level]);
 };
 
 const setCategory = () => {
   Object.keys(categories).forEach(category => {
     if (
-      randomNumberEnd - 1800 >= categories[category].min &&
-      randomNumberEnd - 1800 <= categories[category].max
+      randomNumberEnd - 3600 >= categories[category].min &&
+      randomNumberEnd - 3600 <= categories[category].max
     ) {
       fetchCategory(category);
     }

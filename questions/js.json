@@ -1,0 +1,9 @@
+{
+  "easy": [
+    {
+      "question": "¿Qué significa JS?",
+      "answers": ["a", "b", "c", "d"],
+      "correct": 0
+    }
+  ]
+}

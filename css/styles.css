@@ -42,10 +42,10 @@ body {
   margin-right: auto;
   border-radius: 50%;
   background-image: conic-gradient(
-    #009ddc 90deg,
-    #963d97 0 180deg,
-    #f6821f 0 270deg,
-    #62bb47 0 360deg
+    #009ddc 0deg 90deg,
+    #963d97 90deg 180deg,
+    #f6821f 180deg 270deg,
+    #62bb47 270deg 360deg
   );
   transform: rotate(var(--spin-start));
 }
@@ -54,24 +54,24 @@ body {
   animation: spin 5s ease-in-out forwards;
 }
 
+.roulette__section {
+  padding-top: 20px;
+}
+
 .roulette__section--first {
   transform: rotate(-45deg);
-  padding-top: 20px;
 }
 
 .roulette__section--second {
   transform: rotate(45deg);
-  padding-top: 20px;
 }
 
 .roulette__section--third {
   transform: rotate(-135deg);
-  padding-top: 20px;
 }
 
 .roulette__section--fourth {
   transform: rotate(135deg);
-  padding-top: 20px;
 }
 
 .roulette__button {
