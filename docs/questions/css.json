@@ -3,7 +3,7 @@
     {
       "question": "¿Qué significa CSS?",
       "answers": ["a", "b", "c", "d"],
-      "correct": 0
+      "correctAnswer": 0
     }
   ]
 }

@@ -1,6 +1,14 @@
 :root {
   --spin-start: 0;
   --spin-end: 0;
+  --counter-position: 0;
+  /* Colors */
+  --bg-color: #252c4a;
+  --blue: #2a8ded;
+  --bg-answer: #25304e;
+  --border-answer: #20486a;
+  --red: #fc4f6c;
+  --purple: #b56ffb;
 }
 
 * {
@@ -10,7 +18,7 @@
 body {
   margin: 0;
   max-height: 100vh;
-  background-color: #333;
+  background-color: var(--bg-color);
   font-family: sans-serif;
   color: aliceblue;
   font-weight: bold;
@@ -19,8 +27,8 @@ body {
 
 .header {
   height: 75px;
-  background-color: #ccc;
-  margin-bottom: 20vh;
+  background-color: var(--red);
+  margin-bottom: 15vh;
 }
 
 .roulette {
@@ -100,4 +108,61 @@ body {
   to {
     transform: rotate(var(--spin-end));
   }
+}
+
+.question-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--bg-color);
+  text-align: center;
+  z-index: 10;
+  transition: transform 0.2s;
+  transform: scale(0);
+}
+
+.question-container--show {
+  transform: scale(1);
+}
+
+.counter {
+  position: relative;
+  height: 50px;
+  width: 75%;
+  margin: 1em auto;
+  background-color: var(--bg-answer);
+  border: 2px solid var(--border-answer);
+  border-radius: 1.5em;
+  overflow: hidden;
+}
+
+.counter::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transform: translateX(var(--counter-position));
+  background-image: linear-gradient(var(--red), var(--purple));
+}
+
+.counter__time {
+  position: relative;
+  z-index: 1;
+}
+
+.question {
+  font-size: 1.4rem;
+}
+
+.answer {
+  background-color: var(--bg-answer);
+  border-radius: 1.5em;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid var(--border-answer);
+  line-height: 2.5;
 }

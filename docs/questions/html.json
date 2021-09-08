@@ -2,8 +2,8 @@
   "easy": [
     {
       "question": "¿Qué significa HTML?",
-      "answers": ["a", "b", "c", "d"],
-      "correct": 0
+      "answers": ["Dorian", "Reiva", "Novato", "itDani"],
+      "correctAnswer": 0
     }
   ]
 }
