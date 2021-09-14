@@ -3,7 +3,7 @@
     {
       "question": "¿Qué significa HTML?",
       "answers": ["Dorian", "Reiva", "Novato", "itDani"],
-      "correctAnswer": 0
+      "correctAnswer": "a"
     }
   ]
 }

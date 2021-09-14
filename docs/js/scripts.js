@@ -3,7 +3,8 @@ const rouletteButton = document.getElementById('roulette-button');
 const rouletteSections = document.getElementById('roulette-sections');
 const questionContainer = document.getElementById('question-container');
 const counterTime = document.getElementById('counter-time');
-const question = document.getElementById('question');
+const questionElement = document.getElementById('question-element');
+const answers = [...document.querySelectorAll('.answer')];
 const answer1 = document.getElementById('answer-1');
 const answer2 = document.getElementById('answer-2');
 const answer3 = document.getElementById('answer-3');
@@ -11,6 +12,7 @@ const answer4 = document.getElementById('answer-4');
 
 let level = 'easy';
 let randomNumberEnd = 0;
+let correctAnswer;
 
 const categories = {
   html: {
@@ -34,11 +36,25 @@ const categories = {
 const randomNumber = () => Math.floor(Math.random() * 360) + 3600;
 
 const writeQuestion = ({ question, answers, correctAnswer }) => {
-  question.textContent = question;
+  questionElement.textContent = question;
   answer1.textContent = answers[0];
+  answer1.dataset.answer = 'a';
   answer2.textContent = answers[1];
+  answer2.dataset.answer = 'b';
   answer3.textContent = answers[2];
+  answer3.dataset.answer = 'c';
   answer4.textContent = answers[3];
+  answer4.dataset.answer = 'd';
+};
+
+const checkCorrectAnswer = userAnswer => {
+  console.log(answers);
+  if (userAnswer !== correctAnswer) {
+    answers.forEach(answer => answer.classList.add('answer--fail'));
+  }
+  answers
+    .find(answer => answer.dataset.answer === correctAnswer)
+    .classList.add('answer--correct');
 };
 
 const fetchCategory = async category => {
@@ -49,6 +65,7 @@ const fetchCategory = async category => {
   const request = await fetch(`./questions/${category}.json`);
   const data = await request.json();
   writeQuestion(data[level][0]);
+  correctAnswer = data[level][0].correctAnswer;
 };
 
 const setCategory = () => {
@@ -72,6 +89,11 @@ const startCounter = () => {
     if (time <= 0) {
       clearInterval(interval);
       questionContainer.classList.remove('question-container--show');
+      rootStyle.setProperty('--counter-position', 0);
+      counterTime.textContent = 5;
+      answers.forEach(answer =>
+        answer.classList.remove('answer--correct', 'answer--fail')
+      );
     } else {
       time = time - 1;
     }
@@ -93,4 +115,8 @@ rouletteSections.addEventListener('animationend', () => {
   rouletteSections.classList.remove('roulette__sections--spin');
   questionContainer.classList.add('question-container--show');
   startCounter();
+});
+
+questionContainer.addEventListener('click', e => {
+  checkCorrectAnswer(e.target.dataset.answer);
 });

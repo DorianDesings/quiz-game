@@ -3,7 +3,7 @@
     {
       "question": "¿Qué significa JS?",
       "answers": ["a", "b", "c", "d"],
-      "correctAnswer": 0
+      "correctAnswer": "a"
     }
   ]
 }

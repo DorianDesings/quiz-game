@@ -166,3 +166,11 @@ body {
   border: 2px solid var(--border-answer);
   line-height: 2.5;
 }
+
+.answer--fail {
+  background-color: crimson;
+}
+
+.answer--correct {
+  background-color: lime;
+}
